@@ -1,8 +1,9 @@
 import { html, render } from "https://esm.run/lit-html@1";
-const template = () => html`<form
+const template = ctx => html`<form
   class="text-center border border-light p-5"
   action="#"
   method="post"
+  @submit=${ctx.onSubmit}
 >
   <div class="form-group">
     <label for="email">Email</label>
@@ -44,8 +45,16 @@ class Register extends HTMLElement {
     this.render();
   }
 
+  onSubmit(e) {
+    e.preventDefault();
+    let formData = new FormData(e.target);
+
+    let email = formData.get("email");
+    let password = formData.get("password");
+    let repeatPassword = formData.get("repeatPassword");
+  }
   render() {
-    render(template(), this);
+    render(template(this), this, { eventContext: this });
   }
 }
 
