@@ -52,6 +52,17 @@ class Register extends HTMLElement {
     let email = formData.get("email");
     let password = formData.get("password");
     let repeatPassword = formData.get("repeatPassword");
+
+    if (password != repeatPassword) {
+      notify("passwords must match", "error");
+      return;
+    }
+    if (password.length < 6) {
+      notify("passwords too short", "error");
+      return;
+    }
+
+    notify("Successful Registration", "success");
   }
   render() {
     render(template(this), this, { eventContext: this });

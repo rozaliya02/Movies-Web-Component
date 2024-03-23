@@ -36,16 +36,17 @@
 
       <div id="root"></div>
 
-      <!-- <section class="notifications" style="display: none;">
-            <p class="notification-message" id="errorBox">Message...</p>
-        </section>
-        <section class="notifications"  style="display: none;background-color:rgba(1, 131, 29, 0.541);">
-            <p class="notification-message" id="successBox">Message...</p>
-        </section> 
-        
+      <section class="notifications" style="display: none">
+        <p class="notification-message" id="errorBox">Message...</p>
+      </section>
+      <section
+        class="notifications"
+        style="display: none; background-color: rgba(1, 131, 29, 0.541)"
+      >
+        <p class="notification-message" id="successBox">Message...</p>
+      </section>
 
-        
-        <h1 class="text-center">Movies</h1>
+      <!-- <h1 class="text-center">Movies</h1>
         <section>
             <a href="#" class="btn btn-warning ">Add Movie</a>
             <form class="search float-right">
@@ -161,9 +162,7 @@
             </div>
         
             <button type="submit" class="btn btn-primary">Login</button>
-        </form>
-
-     -->
+        </form> -->
 
       <footer class="page-footer font-small">
         <div class="footer-copyright text-center py-3">
@@ -176,5 +175,26 @@
         </div>
       </footer>
     </div>
+    <script>
+      function notify(message, type = "success") {
+        let notificationElement;
+
+        switch (type) {
+          case "success":
+            notificationElement = document.getElementById("successBox");
+            break;
+          case "error":
+            notificationElement = document.getElementById("errorBox");
+            break;
+        }
+
+        notificationElement.innerText = message;
+        notificationElement.parentElement.style.display = "block";
+
+        setTimeout(() => {
+          notificationElement.parentElement.style.display = "none";
+        }, 3000);
+      }
+    </script>
   </body>
 </html>
