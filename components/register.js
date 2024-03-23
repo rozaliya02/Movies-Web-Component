@@ -41,6 +41,10 @@ const template = () => html`<form
 
 class Register extends HTMLElement {
   connectedCallback() {
+    this.render();
+  }
+
+  render() {
     render(template(), this);
   }
 }
