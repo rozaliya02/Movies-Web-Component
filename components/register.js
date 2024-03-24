@@ -64,9 +64,13 @@ class Register extends HTMLElement {
       return;
     }
 
-    register(email, password).then(res => {
-      notify("Successful Registration", "success");
-    });
+    register(email, password)
+      .then(res => {
+        notify("Successful Registration", "success");
+      })
+      .catch(err => {
+        console.log(err.message);
+      });
   }
   render() {
     render(template(this), this, { eventContext: this });
