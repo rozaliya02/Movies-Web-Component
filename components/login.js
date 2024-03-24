@@ -1,4 +1,5 @@
 import { html, render } from "https://esm.run/lit-html@1";
+import { Router } from "https://unpkg.com/@vaadin/router";
 import { login } from "../services/authService.js";
 
 const template = ctx => html`<form
@@ -44,6 +45,7 @@ class Login extends HTMLElement {
 
     login(email, password).then(res => {
       notify("Successful Login", "success");
+      Router.go("/");
     });
   }
   render() {

@@ -28,3 +28,22 @@ export const login = async (email, password) => {
 
   return response;
 };
+
+export const getUserData = () => {
+  try {
+    let data = JSON.parse(localStorage.getItem("auth"));
+    return {
+      isAuthenticated: Boolean(data.idToken),
+      email: data.email,
+    };
+  } catch (error) {
+    return {
+      isAuthenticated: false,
+      email: "",
+    };
+  }
+};
+
+export const logout = async () => {
+  localStorage.setItem("auth", "");
+};
