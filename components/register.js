@@ -1,4 +1,6 @@
 import { html, render } from "https://esm.run/lit-html@1";
+import { register } from "../services/authService.js";
+
 const template = ctx => html`<form
   class="text-center border border-light p-5"
   action="#"
@@ -62,7 +64,9 @@ class Register extends HTMLElement {
       return;
     }
 
-    notify("Successful Registration", "success");
+    register(email, password).then(res => {
+      notify("Successful Registration", "success");
+    });
   }
   render() {
     render(template(this), this, { eventContext: this });
