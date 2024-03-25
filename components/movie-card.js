@@ -11,7 +11,7 @@ const template = ctx => html`<div class="card mb-4">
     <h4 class="card-title">${ctx.data.title}</h4>
   </div>
   <div class="card-footer">
-    <a href="#/details/6lOxMFSMkML09wux6sAF"
+    <a href="details/${ctx.data.key}"
       ><button type="button" class="btn btn-info">Details</button></a
     >
   </div>
